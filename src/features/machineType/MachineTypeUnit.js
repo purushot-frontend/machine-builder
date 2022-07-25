@@ -8,7 +8,7 @@ const MachineTypeUnit = (props) => {
   const data = props.data;
   const index = props.index;
   const [isEditing, setIsEditing] = useState(false);
-  console.log(props.data, "yes");
+
   const dispatch = useDispatch();
 
   const deleteMachineTypeHandler = (index) => {
@@ -18,8 +18,6 @@ const MachineTypeUnit = (props) => {
   const cancelEditMachineTypeHandler = () => {
     setIsEditing(false);
   };
-
-  console.log(isEditing);
 
   const defaultView = () => {
     return (

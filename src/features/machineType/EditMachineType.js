@@ -1,23 +1,19 @@
-import Card from "react-bootstrap/Card";
 import { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import Card from "react-bootstrap/Card";
 import Fields from "./Fields";
 import { onlyText } from "./../../helpers/common";
-import {
-  updateMachineType,
-  machineTypeList as typeList,
-} from "./../../store/machineTypeSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { updateMachineType } from "./../../store/machineTypeSlice";
 
 const EditMachineType = (props) => {
   const data = props.data;
-  console.log(data, "tessr");
+
   const [fieldArray, setFieldArray] = useState(data.fields);
   const nameRef = useRef();
   const mainFieldRef = useRef();
   const UpdateFieldArray = (data) => {
     setFieldArray(data);
   };
-  const machineTypeList = useSelector(typeList);
 
   const dispatch = useDispatch();
 
@@ -34,7 +30,7 @@ const EditMachineType = (props) => {
         mainField: mainField,
         fields: fieldArray,
       };
-      console.log("test", props.index);
+
       const data2 = { index: props.index, machineTypeObj };
       dispatch(updateMachineType(data2));
       cancelEditMachineTypeHandler();

@@ -1,11 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  Plus,
-  ArrowDown,
-  TrashFill,
-  PencilSquare,
-} from "react-bootstrap-icons";
-import { sanitizeString, onlyNumber, onlyText } from "./../../helpers/common";
+import { Plus, TrashFill, PencilSquare } from "react-bootstrap-icons";
+import { onlyText } from "./../../helpers/common";
 import Button from "react-bootstrap/Button";
 
 const Fields = (props) => {
@@ -15,7 +10,6 @@ const Fields = (props) => {
   const [editNameValue, setEditNameValue] = useState("");
   const fieldNameRef = useRef();
   const fieldTypeRef = useRef();
-  console.log(fieldArray);
 
   useEffect(() => {
     props.UpdateFieldArray(fieldArray);

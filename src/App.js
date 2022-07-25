@@ -1,53 +1,36 @@
-import MainNavigationBar from "./components/UI/MainNavigationBar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { useSelector } from "react-redux";
+import { machineTypeList as typeList } from "./store/machineTypeSlice";
+import MachinesByType from "./features/machine/MachinesByType";
+import MainNavigationBar from "./components/UI/MainNavigationBar";
 import MachineCard from "./components/UI/Card";
-import Text from "./components/Text";
-import store from "./store/store";
-import { Provider } from "react-redux";
 import MachineType from "./features/machineType/MachineType";
+import AllMachines from "./features/machine/AllMachines";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <MainNavigationBar />
-        <Container>
-          <Row className={`my-5`}>
-            <Routes>
-              <Route
-                path="/"
-                exact
-                element={
-                  <>
-                    <Col md={4}>
-                      <MachineCard />
-                    </Col>
-                    <Col md={4}>
-                      <MachineCard />
-                    </Col>
-                    <Col md={4}>
-                      <MachineCard />
-                    </Col>
-                    <Col md={4}>
-                      <MachineCard />
-                    </Col>
-                    <Col md={4}>
-                      <MachineCard />
-                    </Col>
-                  </>
-                }
-              />
+  const machineTypeList = useSelector(typeList);
 
-              <Route path="/types" element={<Text />}></Route>
-              <Route path="/machine-type" element={<MachineType />}></Route>
-            </Routes>
-          </Row>
-        </Container>
-      </Router>
-    </Provider>
+  return (
+    <Router>
+      <MainNavigationBar />
+      <Container>
+        <Row className={`my-5`}>
+          <Routes>
+            <Route path="/" exact element={<AllMachines />}></Route>
+            <Route path="/machine-type" element={<MachineType />}></Route>
+            {machineTypeList.map((element, index) => (
+              <Route
+                path={`/${element.name.replace(/\s/g, "-")}`}
+                element={<MachinesByType data={element} />}
+              ></Route>
+            ))}
+          </Routes>
+        </Row>
+      </Container>
+    </Router>
   );
 }
 

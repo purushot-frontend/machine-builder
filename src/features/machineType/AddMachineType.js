@@ -1,14 +1,11 @@
-import Card from "react-bootstrap/Card";
 import { useState, useRef } from "react";
-import { Plus, ArrowDown, TrashFill } from "react-bootstrap-icons";
+import Card from "react-bootstrap/Card";
+import { useDispatch } from "react-redux";
+import { Plus } from "react-bootstrap-icons";
 import Button from "react-bootstrap/Button";
 import Fields from "./Fields";
-import { sanitizeString, onlyNumber, onlyText } from "./../../helpers/common";
-import {
-  addNewMachineType,
-  machineTypeList as typeList,
-} from "./../../store/machineTypeSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { addNewMachineType } from "./../../store/machineTypeSlice";
+import { onlyText } from "./../../helpers/common";
 
 const AddMachineType = () => {
   const [isAddIconClicked, setIsAddIconClicked] = useState(false);
@@ -18,8 +15,6 @@ const AddMachineType = () => {
   const UpdateFieldArray = (data) => {
     setFieldArray(data);
   };
-  const machineTypeList = useSelector(typeList);
-  console.log("redux", machineTypeList);
 
   const dispatch = useDispatch();
 

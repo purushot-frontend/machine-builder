@@ -3,8 +3,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { machineTypeList as typeList } from "./../../store/machineTypeSlice";
 
 function MainNavigationBar() {
+  const machineTypeList = useSelector(typeList);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -18,15 +22,13 @@ function MainNavigationBar() {
 
             <Nav.Link href="#pricing"></Nav.Link>
             <NavDropdown title="Machine Types" id="collasible-nav-dropdown">
-              <NavDropdown.Item>
-                <Link to="/types">Bull dzoer</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Crane</NavDropdown.Item>
-
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              {machineTypeList.map((element, index) => (
+                <NavDropdown.Item>
+                  <Link key={index} to={`/${element.name.replace(/\s/g, "-")}`}>
+                    {element.name}
+                  </Link>
+                </NavDropdown.Item>
+              ))}
             </NavDropdown>
           </Nav>
           <Nav>

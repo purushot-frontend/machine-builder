@@ -13,7 +13,7 @@ export const machineTypeSlice = createSlice({
     },
     updateMachineType: (state, data) => {
       localStorage.setItem("machineTypeList", JSON.stringify(state.list));
-      console.log(data.payload.index, "why");
+
       const newList = state.list.map((element, index) => {
         return index == data.payload.index
           ? data.payload.machineTypeObj
