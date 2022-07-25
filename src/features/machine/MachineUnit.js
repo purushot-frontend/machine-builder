@@ -29,7 +29,7 @@ const MachineUnit = (props) => {
       if (currentData[element?.name]) {
         newElement.value = currentData[element.name];
       } else {
-        newElement.value = "off";
+        newElement.value = "";
       }
       return newElement;
     });
