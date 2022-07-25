@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import { deleteMachineType } from "./../../store/machineTypeSlice";
-import { useDispatch } from "react-redux";
+import { deleteMachineByType } from "./../../store/machineSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import EditMachineType from "./EditMachineType";
 
@@ -11,8 +12,9 @@ const MachineTypeUnit = (props) => {
 
   const dispatch = useDispatch();
 
-  const deleteMachineTypeHandler = (index) => {
-    dispatch(deleteMachineType({ key: index }));
+  const deleteMachineTypeHandler = async (index, name) => {
+    await dispatch(deleteMachineType({ key: index }));
+    dispatch(deleteMachineByType({ name }));
   };
 
   const cancelEditMachineTypeHandler = () => {
@@ -47,7 +49,7 @@ const MachineTypeUnit = (props) => {
             type="button"
             className="btn btn-danger mx-1 float-end"
             onClick={() => {
-              deleteMachineTypeHandler(index);
+              deleteMachineTypeHandler(index, data.name);
             }}
           >
             Delete

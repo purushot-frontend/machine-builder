@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Fields from "./Fields";
 import { onlyText } from "./../../helpers/common";
 import { updateMachineType } from "./../../store/machineTypeSlice";
+import { updateMachineByType } from "../../store/machineSlice";
 
 const EditMachineType = (props) => {
   const data = props.data;
@@ -17,7 +18,7 @@ const EditMachineType = (props) => {
 
   const dispatch = useDispatch();
 
-  const EditNewMachineTypeHandler = (e) => {
+  const EditNewMachineTypeHandler = async (e) => {
     e.preventDefault();
     const name = onlyText(nameRef.current.value);
     const mainField = onlyText(mainFieldRef.current.value);
@@ -32,7 +33,8 @@ const EditMachineType = (props) => {
       };
 
       const data2 = { index: props.index, machineTypeObj };
-      dispatch(updateMachineType(data2));
+      await dispatch(updateMachineType(data2));
+      dispatch(updateMachineByType(data2));
       cancelEditMachineTypeHandler();
     }
   };

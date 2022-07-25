@@ -17,7 +17,7 @@ const MachinesByType = (props) => {
     });
     const machineObj = {
       machineType: data.name,
-      titleField: "",
+      mainField: data.mainField,
       fields: fields,
     };
     dispatch(addNewMachine(machineObj));
@@ -43,7 +43,7 @@ const MachinesByType = (props) => {
               AddNewMachineHandler();
             }}
           >
-            Add Item
+            Add Machine
           </button>
         </Col>
       </Row>{" "}
