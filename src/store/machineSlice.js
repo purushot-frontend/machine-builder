@@ -7,22 +7,25 @@ export const machineSlice = createSlice({
   },
   reducers: {
     addNewMachine: (state, data) => {
-      const newList = [...state.list, data.payload];
+      let newList = state.list.map((element, index) => {
+        return { ...element, id: index + 1 };
+      });
+      newList = [...newList, { ...data.payload, id: state.list.length + 1 }];
       localStorage.setItem("machineList", JSON.stringify(newList));
       state.list = newList;
     },
     updateMachine: (state, data2) => {
-      const { data, key } = data2.payload;
+      const { data, id } = data2.payload;
 
       const newList = state.list.map((element, index) => {
-        return index == key ? data : element;
+        return element.id == id ? data : element;
       });
       localStorage.setItem("machineList", JSON.stringify(newList));
       state.list = newList;
     },
     deleteMachine: (state, data) => {
       const newList = state.list.filter(
-        (item, index) => index !== data.payload.key
+        (item, index) => item.id !== data.payload.id
       );
       localStorage.setItem("machineList", JSON.stringify(newList));
       state.list = newList;

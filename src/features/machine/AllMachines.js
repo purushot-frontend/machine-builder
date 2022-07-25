@@ -6,8 +6,8 @@ const AllMachines = () => {
 
   return (
     <>
-      {machineTypeList.map((element) => (
-        <MachinesByType data={element} />
+      {machineTypeList.map((element, index) => (
+        <MachinesByType key={index} data={element} />
       ))}
     </>
   );

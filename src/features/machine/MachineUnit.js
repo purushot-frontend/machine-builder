@@ -5,15 +5,15 @@ import { useDispatch } from "react-redux";
 
 const MachineUnit = (props) => {
   const data = props.data;
-  const index = props.index;
+  const id = props.id;
   const formId = useId();
   const dispatch = useDispatch();
   const mainField = data.fields.find(
     (element) => element.name == data.mainField
   );
 
-  const deleteMachineHandler = (index) => {
-    dispatch(deleteMachine({ key: index }));
+  const deleteMachineHandler = () => {
+    dispatch(deleteMachine({ id: id }));
   };
 
   const saveData = () => {
@@ -34,7 +34,7 @@ const MachineUnit = (props) => {
       return newElement;
     });
     newData.fields = fields;
-    dispatch(updateMachine({ key: index, data: newData }));
+    dispatch(updateMachine({ id: id, data: newData }));
   };
 
   const renderInput = (name, type, value) => {
@@ -104,8 +104,6 @@ const MachineUnit = (props) => {
           <br />
         </div>
       );
-    } else {
-      return <li key={index}>{`${name} - ${type}`}</li>;
     }
   };
 
@@ -123,7 +121,7 @@ const MachineUnit = (props) => {
         <button
           className="btn btn-danger btn-sm"
           onClick={() => {
-            deleteMachineHandler(index);
+            deleteMachineHandler();
           }}
         >
           Delete

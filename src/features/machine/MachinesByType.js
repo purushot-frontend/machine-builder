@@ -33,7 +33,12 @@ const MachinesByType = (props) => {
           .filter((element) => element.machineType == data.name)
           .map((element, index) => (
             <Col md={4}>
-              <MachineUnit key={index} index={index} data={element} />
+              <MachineUnit
+                key={index}
+                id={element.id}
+                index={index}
+                data={element}
+              />
             </Col>
           ))}
         <Col md={4} className="py-5 text-center">
