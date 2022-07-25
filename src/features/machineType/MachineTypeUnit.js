@@ -36,7 +36,7 @@ const MachineTypeUnit = (props) => {
 
           <button
             type="button"
-            class="btn btn-primary mx-1 float-end"
+            className="btn btn-primary mx-1 float-end"
             onClick={() => {
               setIsEditing(true);
             }}
@@ -45,7 +45,7 @@ const MachineTypeUnit = (props) => {
           </button>
           <button
             type="button"
-            class="btn btn-danger mx-1 float-end"
+            className="btn btn-danger mx-1 float-end"
             onClick={() => {
               deleteMachineTypeHandler(index);
             }}

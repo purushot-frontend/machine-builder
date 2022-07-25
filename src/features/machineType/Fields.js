@@ -59,8 +59,8 @@ const Fields = (props) => {
   };
 
   return (
-    <div class="alert alert-dark" role="alert">
-      <h4 class="alert-heading text-center">Fields</h4>
+    <div className="alert alert-dark" role="alert">
+      <h4 className="alert-heading text-center">Fields</h4>
       <hr />
 
       {fieldArray.length > 0 ? (
@@ -95,17 +95,17 @@ const Fields = (props) => {
 
       {isAddIconClicked ? (
         <>
-          <div class="form-group">
+          <div className="form-group">
             <label>Field Name</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Enter Field Name"
               ref={fieldNameRef}
             />
           </div>
           <br />
-          <div class="form-group">
+          <div className="form-group">
             <label>Field Type</label>
             <select className="form-control" ref={fieldTypeRef}>
               <option value="" selected>
@@ -118,7 +118,7 @@ const Fields = (props) => {
             </select>
           </div>
           <br />
-          <button type="button" onClick={AddField} class="btn btn-primary">
+          <button type="button" onClick={AddField} className="btn btn-primary">
             Add
           </button>
         </>

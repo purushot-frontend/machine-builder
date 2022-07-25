@@ -41,11 +41,11 @@ const AddMachineType = () => {
       {isAddIconClicked ? (
         <Card.Body>
           <form onSubmit={AddNewMachineTypeHandler}>
-            <div class="form-group">
+            <div className="form-group">
               <label>Name</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Name"
                 required
                 ref={nameRef}
@@ -53,7 +53,7 @@ const AddMachineType = () => {
             </div>
             <br />
             <Fields UpdateFieldArray={UpdateFieldArray} />
-            <div class="form-group">
+            <div className="form-group">
               <label>Main Field</label>
               <select className="form-control" required ref={mainFieldRef}>
                 <option value="" selected>
@@ -69,7 +69,7 @@ const AddMachineType = () => {
               </select>
             </div>
             <br />
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>

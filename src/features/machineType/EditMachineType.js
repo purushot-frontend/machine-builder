@@ -45,11 +45,11 @@ const EditMachineType = (props) => {
     <Card className={`mx-2 my-2`}>
       <Card.Body>
         <form onSubmit={EditNewMachineTypeHandler}>
-          <div class="form-group">
+          <div className="form-group">
             <label>Name</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Enter Name"
               required
               ref={nameRef}
@@ -58,7 +58,7 @@ const EditMachineType = (props) => {
           </div>
           <br />
           <Fields fieldArray={fieldArray} UpdateFieldArray={UpdateFieldArray} />
-          <div class="form-group">
+          <div className="form-group">
             <label>Main Field</label>
             <select
               defaultValue={data.mainField}
@@ -79,12 +79,12 @@ const EditMachineType = (props) => {
             </select>
           </div>
           <br />
-          <button type="submit" class="btn btn-primary mx-1 float-end">
+          <button type="submit" className="btn btn-primary mx-1 float-end">
             Submit
           </button>
           <button
             type="button"
-            class="btn btn-danger mx-1 float-end"
+            className="btn btn-danger mx-1 float-end"
             onClick={() => {
               cancelEditMachineTypeHandler();
             }}
