@@ -11,8 +11,14 @@ export const machineSlice = createSlice({
       localStorage.setItem("machineList", JSON.stringify(newList));
       state.list = newList;
     },
-    updateMachine: (state, data) => {
-      //
+    updateMachine: (state, data2) => {
+      const { data, key } = data2.payload;
+
+      const newList = state.list.map((element, index) => {
+        return index == key ? data : element;
+      });
+      localStorage.setItem("machineList", JSON.stringify(newList));
+      state.list = newList;
     },
     deleteMachine: (state, data) => {
       const newList = state.list.filter(
