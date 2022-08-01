@@ -7,16 +7,11 @@ import { machineTypeList as typeList } from "./../../store/databaseSlice";
 
 const MachineType = () => {
   const machineTypeList = useSelector(typeList);
-
   return (
     <Row>
-      {Object.entries(machineTypeList).map((element) => (
+      {machineTypeList.map((element, index) => (
         <Col md={4}>
-          <MachineTypeUnit
-            key={element[0]}
-            objectID={element[0]}
-            data={element[1]}
-          />
+          <MachineTypeUnit key={index} index={index} data={element} />
         </Col>
       ))}
       <Col md={4}>

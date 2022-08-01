@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { machineTypeList as typeList } from "./../../store/machineTypeSlice";
+import { machineTypeList as typeList } from "./../../store/databaseSlice";
 import MachinesByType from "./MachinesByType";
 const AllMachines = () => {
   const machineTypeList = useSelector(typeList);

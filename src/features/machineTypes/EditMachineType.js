@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Fields from "./Fields";
 import { onlyText } from "./../../helpers/common";
-import { updateMachineType } from "./../../store/machineTypeSlice";
+import { updateMachineType } from "./../../store/databaseSlice";
 import { updateMachineByType } from "../../store/machineSlice";
 
 const EditMachineType = (props) => {

@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { machineTypeList as typeList } from "./../../store/machineTypeSlice";
+import { machineTypeList as typeList } from "./../../store/databaseSlice";
 
 function MainNavigationBar() {
   const machineTypeList = useSelector(typeList);
@@ -22,7 +22,7 @@ function MainNavigationBar() {
 
             <Nav.Link href="#pricing"></Nav.Link>
             <NavDropdown title="Machine Types" id="collasible-nav-dropdown">
-              {machineTypeList.map((element, index) => (
+              {Object.values(machineTypeList).map((element, index) => (
                 <NavDropdown.Item>
                   <Link key={index} to={`/${element.name.replace(/\s/g, "-")}`}>
                     {element.name}
