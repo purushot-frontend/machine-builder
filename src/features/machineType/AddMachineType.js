@@ -14,11 +14,12 @@ const AddMachineType = () => {
 
   const AddNewMachineTypeHandler = () => {
     const machineTypeObj = {
-      name: ``,
+      name: "",
       mainField: null,
-      counter: 1,
-      fields: [],
-      machines: [],
+      fieldsCounter: 1,
+      machinesCounter: 1,
+      fields: {},
+      machines: {},
     };
     dispatch(addNewMachineType(machineTypeObj));
   };

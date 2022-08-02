@@ -29,31 +29,20 @@ export const databaseSlice = createSlice({
       console.log(name, objectID);
       state.database.machineTypeList[objectID].name = name;
     },
-    updateMachineType: (state, data) => {
-      const newList = state.list.map((element, index) => {
-        return index == data.payload.index
-          ? data.payload.machineTypeObj
-          : element;
-      });
-      localStorage.setItem("machineTypeList", JSON.stringify(newList));
-      state.list = newList;
-    },
-    deleteMachineType: (state, data) => {
-      const newList = state.list.filter(
-        (item, index) => index !== data.payload.key
-      );
-      localStorage.setItem("machineTypeList", JSON.stringify(newList));
-      state.list = newList;
+    addField: (state, data) => {
+      const { type, objectID } = data.payload;
+      console.log(type, objectID);
+
+      state.database.machineTypeList[objectID].fields[
+        "objectID" + state.database.machineTypeList[objectID].fieldsCounter
+      ] = { type, name: "" };
+      state.database.machineTypeList[objectID].fieldsCounter += 1;
     },
   },
 });
 
-export const {
-  addNewMachineType,
-  deleteMachineType,
-  updateMachineType,
-  editMachineNameType,
-} = databaseSlice.actions;
+export const { addNewMachineType, editMachineNameType, addField } =
+  databaseSlice.actions;
 
 export const machineTypeList = (state) =>
   state.database.database.machineTypeList;
