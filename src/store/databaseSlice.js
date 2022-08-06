@@ -26,7 +26,6 @@ export const databaseSlice = createSlice({
 
     editMachineNameType: (state, data) => {
       const { name, objectID } = data.payload;
-      console.log(name, objectID);
       state.database.machineTypeList[objectID].name = name;
     },
     deleteMachineType: (state, data) => {
@@ -35,7 +34,6 @@ export const databaseSlice = createSlice({
     },
     addField: (state, data) => {
       const { type, objectID } = data.payload;
-      console.log(type, objectID);
 
       state.database.machineTypeList[objectID].fields[
         "objectID" + state.database.machineTypeList[objectID].fieldsCounter
@@ -44,7 +42,6 @@ export const databaseSlice = createSlice({
     },
     updateField: (state, data) => {
       const { name, fieldType, fieldId, machineTypeID } = data.payload;
-      console.log(name, fieldType, fieldId, machineTypeID);
       state.database.machineTypeList[machineTypeID].fields[fieldId] = {
         type: fieldType,
         name,
@@ -53,6 +50,10 @@ export const databaseSlice = createSlice({
     deleteFieldType: (state, data) => {
       const { fieldId, machineTypeID } = data.payload;
       delete state.database.machineTypeList[machineTypeID].fields[fieldId];
+    },
+    updateMainField: (state, data) => {
+      const { mainField, machineTypeID } = data.payload;
+      state.database.machineTypeList[machineTypeID].mainField = mainField;
     },
   },
 });
@@ -64,6 +65,7 @@ export const {
   updateField,
   deleteMachineType,
   deleteFieldType,
+  updateMainField,
 } = databaseSlice.actions;
 
 export const machineTypeList = (state) =>

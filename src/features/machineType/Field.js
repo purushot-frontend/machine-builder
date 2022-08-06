@@ -8,7 +8,6 @@ import { Trash } from "react-bootstrap-icons";
 
 const Field = (props) => {
   const { data, objectID, machineTypeID } = props;
-  console.log(data.type, objectID, machineTypeID);
   const selectTypeRef = useRef();
   const nameRef = useRef();
   const dispatch = useDispatch();

@@ -1,20 +1,30 @@
+import { useRef } from "react";
 import { Card } from "react-bootstrap";
 import { Link, Trash } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import MachineTypeName from "./MachineTypeName";
 import AddField from "./AddField";
 import Field from "./Field";
-import { deleteMachineType } from "../../store/databaseSlice";
+import { deleteMachineType, updateMainField } from "../../store/databaseSlice";
 
 const MachineTypeUnit = (props) => {
   const { objectID, data } = props;
-  const { name, fields } = data;
+  const { name, fields, mainField } = data;
   const dispatch = useDispatch();
+  const mainFieldRef = useRef();
   const fieldsSize = Object.keys(fields).length;
-
   const deleteMachineTypeHandler = () => {
     dispatch(deleteMachineType({ objectID }));
   };
+
+  const updateMainFieldHandler = () => {
+    const newMainField = mainFieldRef.current.value;
+    console.log(newMainField);
+    dispatch(
+      updateMainField({ mainField: newMainField, machineTypeID: objectID })
+    );
+  };
+
   return (
     <Card className={`mx-2 my-2`}>
       <Card.Title>
@@ -49,6 +59,20 @@ const MachineTypeUnit = (props) => {
           <p>No fields yet.</p>
         )}
         <hr />
+        <label>Main Field</label>
+        <select
+          className="form-control"
+          ref={mainFieldRef}
+          value={`${mainField}`}
+          onChange={() => {
+            updateMainFieldHandler();
+          }}
+        >
+          <option value="">--select --</option>
+          {Object.entries(fields).map((element) => {
+            return <option value={element[0]}>{element[1].name}</option>;
+          })}
+        </select>
         <AddField objectID={objectID} />
       </Card.Body>
     </Card>
