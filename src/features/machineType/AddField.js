@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Plus } from "react-bootstrap-icons";
 import { Button } from "react-bootstrap";
 import { addField } from "./../../store/databaseSlice";
@@ -13,7 +13,7 @@ const AddField = (props) => {
     e.preventDefault();
     const fieldType = fieldTypeRef.current.value;
     dispatch(addField({ type: fieldType, objectID }));
-    setIsIconClicked(true);
+    setIsIconClicked(false);
   };
 
   return !isIconClicked ? (
